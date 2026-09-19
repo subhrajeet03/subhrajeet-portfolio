@@ -1,83 +1,82 @@
-# Subhrajeet Swain — Personal Portfolio Website
+# Subhrajeet Swain — Interactive Python Portfolio Web Application
 
-A sleek, responsive, modern personal developer and QA portfolio created for **Subhrajeet Swain** (BCA & MCA Graduate, QA Intern at Team Pumpkin).
+A modern, interactive developer and QA engineering portfolio built with **Pure Python** and **Streamlit** for **Subhrajeet Swain** (BCA & MCA Graduate, QA Intern at Team Pumpkin).
 
----
-
-## 🌟 Key Features
-
-- **Dynamic Hero Section**: Interactive typewriter effect highlighting key roles (`QA Specialist`, `Python Developer`, `MCA Graduate`, `Data & BI Enthusiast`), active job-seeking status badge, and direct call-to-actions.
-- **Dark & Light Mode**: Seamless theme toggle with local storage persistence and system preference detection.
-- **Experience Timeline**: Detailed highlight of QA Internship at **Team Pumpkin (Tech.)** with testing competencies, defect tracking (**Acedboard**), and UI/UX validation.
-- **Project Showcase & Modal**: Featured breakdown of the **E-Hospital Management System** with sub-modules, impact metrics, and interactive architecture view.
-- **Interactive Skills Matrix**: Filterable skills by category (*Programming*, *Testing & QA*, *Data & BI*, *Web & Databases*, *Productivity & Tools*).
-- **Education Section**: Complete timeline for MCA (Presidency College), BCA (Science College Autonomous - CGPA 7.08), Class XII, and Class X.
-- **One-Click Contact & Copy**: Instant clipboard copy for phone numbers and email with toast notifications, plus a functional contact inquiry form.
-- **Print / PDF Friendly**: Styled `@media print` rules allow saving or printing a clean, formatted CV directly (`Ctrl + P`).
-- **Zero Build Dependencies**: Pure HTML5, CSS3, and modern Vanilla ES6+ JavaScript. No `npm`, `node_modules`, or complex build steps required!
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://streamlit.io)
+[![GitHub](https://img.shields.io/badge/GitHub-subhrajeet03-181717?style=flat&logo=github)](https://github.com/subhrajeet03)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-subhrajeet--swain-0A66C2?style=flat&logo=linkedin)](https://linkedin.com/in/subhrajeet-swain)
 
 ---
 
-## 📂 Project Structure
+## 🌟 What's Inside
+
+- **No HTML required!** Powered completely by Python data science and web components.
+- **Dynamic Profile & Sidebar**: Status badge (`🟢 Ready for Hire`), quick contact actions, and 1-click plain text resume download.
+- **QA Engineering Showcase**: Interactive test case matrix with real-time module & status filters, plus a realistic **Acedboard** defect tracking ticket mockup.
+- **E-Hospital Management System (Live Simulator)**:
+  - 🩺 Doctor Consultation & OPD Duty Roster
+  - 🏥 Patient EMR Record Search Simulation
+  - 💊 Pharmacy Drug Inventory & Low-Stock Alerts
+  - 💳 Interactive Billing & Health Insurance / TPA Claims Calculator
+- **Skills Matrix & Visual Analytics**: Interactive bar chart comparing competencies across QA testing, Python, SQL, C/C++, and BI tools.
+- **Education Timeline**: Full academic credentials (MCA 2026, BCA CGPA 7.08, Class XII Science, Class X).
+- **Languages & Interests**: English, Hindi, Odia, Community Volunteering, and Continuous Upskilling.
+- **Interactive Contact Form**: Direct form submission and contact links.
+
+---
+
+## 🚀 How to Run Locally
+
+1. Open your terminal or PowerShell in this folder:
+   ```powershell
+   cd C:\Users\HP\.gemini\antigravity\scratch\subhrajeet-portfolio
+   ```
+
+2. Run the Streamlit application:
+   ```powershell
+   streamlit run app.py
+   ```
+   Or using python module syntax:
+   ```powershell
+   python -m streamlit run app.py
+   ```
+
+3. Your default web browser will automatically open:
+   `http://localhost:8501`
+
+---
+
+## 🌐 Deploy to GitHub & Streamlit Community Cloud
+
+### Step 1: Push to GitHub
+```bash
+git add .
+git commit -m "feat: complete pure Python Streamlit portfolio app"
+git remote add origin https://github.com/subhrajeet03/subhrajeet-portfolio.git
+git branch -M main
+git push -u origin main
+```
+
+### Step 2: 1-Click Free Hosting on Streamlit Cloud
+1. Go to [share.streamlit.io](https://share.streamlit.io/) and log in with your GitHub account (`subhrajeet03`).
+2. Click **New App**.
+3. Select your repository: `subhrajeet03/subhrajeet-portfolio`.
+4. Set Main file path: `app.py`.
+5. Click **Deploy!** Your Python portfolio will be live at `https://subhrajeet-portfolio.streamlit.app`!
+
+---
+
+## 📂 Project Architecture
 
 ```
 subhrajeet-portfolio/
 │
-├── index.html            # Main website markup & semantic structure
-├── css/
-│   └── style.css         # Design system, CSS variables, dark/light themes, animations
-├── js/
-│   └── main.js           # Theme toggle, typewriter, filter, modal, clipboard toasts
+├── app.py                     # Main Python Streamlit application
+├── requirements.txt           # Python dependencies (streamlit, pandas, altair)
+├── .streamlit/
+│   └── config.toml            # Theme and server configuration
 ├── assets/
-│   └── avatar.svg        # Custom modern tech avatar SVG
-└── README.md             # Documentation and deployment guide
+│   └── avatar.svg             # Vector profile graphic
+├── .gitignore                 # Standard Python & OS ignore rules
+└── README.md                  # Instructions & deployment guide
 ```
-
----
-
-## 🚀 How to View Locally
-
-### Option 1: Direct File Open
-Simply double-click `index.html` or right-click and choose **Open with > Chrome / Edge / Firefox**.
-
-### Option 2: Local HTTP Server (Python)
-If you have Python installed, open PowerShell or Terminal in this folder and run:
-```powershell
-python -m http.server 8000
-```
-Then visit: [http://localhost:8000](http://localhost:8000)
-
----
-
-## 🌐 Free One-Click Deployment
-
-### Deploy to GitHub Pages (Recommended)
-1. Initialize git in this folder:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial portfolio commit"
-   ```
-2. Create a new repository on [GitHub](https://github.com/new) named `subhrajeet-swain.github.io` (or any name).
-3. Link and push:
-   ```bash
-   git remote add origin https://github.com/<your-username>/<repo-name>.git
-   git branch -M main
-   git push -u origin main
-   ```
-4. In GitHub repository **Settings > Pages**, set the source branch to `main` and save. Your site is live!
-
-### Deploy to Netlify / Vercel
-- **Netlify**: Drag-and-drop this entire folder into [Netlify Drop](https://app.netlify.com/drop).
-- **Vercel**: Run `vercel` in terminal or import your GitHub repository into Vercel.
-
----
-
-## 🎨 How to Customize
-
-- **Add Your Real Photo**: Place a photo named `photo.jpg` in the `assets/` folder, then in `index.html`, change `src="assets/avatar.svg"` to `src="assets/photo.jpg"`.
-- **Add a Downloadable PDF Resume**: Place your PDF file in `assets/Subhrajeet_Swain_Resume.pdf`, and link it to the "Print / Save Resume" button:
-  ```html
-  <a href="assets/Subhrajeet_Swain_Resume.pdf" download class="btn btn-secondary">Download Resume</a>
-  ```
-- **Update GitHub / Social Links**: Add your GitHub link inside the `.hero-cta-group` or footer in `index.html`.

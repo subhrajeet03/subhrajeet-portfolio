@@ -14,6 +14,17 @@ st.markdown(
     @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&display=swap');
     :root { --ink:#f4f7fb; --muted:#93a0b5; --line:#263246; --panel:#111722; --green:#9cff45; --blue:#6c7cff; }
     .stApp { background: radial-gradient(circle at 90% 0%,#1d2340 0,transparent 32rem), #0a0d14; color:var(--ink); }
+    .stApp::before, .stApp::after { position:fixed; z-index:0; pointer-events:none; content:""; }
+    .stApp::before { inset:-25%; background:radial-gradient(circle at 20% 20%,rgba(156,255,69,.11),transparent 18%),radial-gradient(circle at 80% 8%,rgba(108,124,255,.2),transparent 25%),radial-gradient(circle at 70% 85%,rgba(162,91,255,.12),transparent 22%); filter:blur(35px); animation:aurora-drift 18s ease-in-out infinite alternate; }
+    .stApp::after { inset:0; opacity:.18; background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px); background-size:72px 72px; mask-image:linear-gradient(to bottom,black,transparent 88%); animation:grid-drift 22s linear infinite; }
+    .background-layer { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+    .background-layer::before { position:absolute; inset:0; opacity:.2; background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(255,255,255,.025) 6px 7px); content:""; animation:scanline 8s linear infinite; }
+    .orb { position:absolute; width:8px; height:8px; border-radius:50%; background:var(--green); box-shadow:0 0 18px 3px rgba(156,255,69,.42); animation:particle-float 11s ease-in-out infinite; }
+    .orb:nth-child(1) { top:22%; left:12%; animation-delay:-2s; }
+    .orb:nth-child(2) { top:66%; left:82%; background:var(--blue); box-shadow:0 0 18px 3px rgba(108,124,255,.5); animation-delay:-6s; }
+    .orb:nth-child(3) { top:38%; left:91%; width:5px; height:5px; animation-delay:-9s; }
+    .orb:nth-child(4) { top:80%; left:24%; width:4px; height:4px; background:#d394ff; box-shadow:0 0 16px 3px rgba(211,148,255,.45); animation-delay:-4s; }
+    .page-content { position:relative; z-index:1; }
     .boot-screen { position:fixed; inset:0; z-index:999; display:grid; place-items:center; background:#070a10; pointer-events:none; animation:boot-out .8s 2.1s forwards; }
     .boot-window { width:min(560px, calc(100vw - 2rem)); border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#0b1019; box-shadow:0 30px 100px rgba(0,0,0,.55); animation:boot-in .7s ease-out both; }
     .boot-top { padding:.8rem 1rem; border-bottom:1px solid var(--line); color:var(--muted); font:.7rem 'DM Mono',monospace; }
@@ -80,10 +91,14 @@ st.markdown(
     @keyframes surface-rise { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
     @keyframes terminal-glow { 0%,100% { box-shadow:0 0 0 rgba(156,255,69,0); } 50% { box-shadow:0 0 32px rgba(108,124,255,.14); } }
     @keyframes status-pulse { 0%,100% { box-shadow:0 0 0 0 rgba(156,255,69,.5); } 50% { box-shadow:0 0 0 7px rgba(156,255,69,0); } }
+    @keyframes aurora-drift { 0% { transform:translate3d(-3%, -2%, 0) rotate(0deg) scale(1); } 100% { transform:translate3d(3%, 3%, 0) rotate(8deg) scale(1.08); } }
+    @keyframes grid-drift { from { background-position:0 0,0 0; } to { background-position:72px 72px,72px 72px; } }
+    @keyframes scanline { from { transform:translateY(-8%); } to { transform:translateY(8%); } }
+    @keyframes particle-float { 0%,100% { transform:translate3d(0,0,0) scale(1); opacity:.45; } 50% { transform:translate3d(34px,-48px,0) scale(1.5); opacity:1; } }
     div.stButton > button { border:1px solid var(--line); border-radius:10px; background:transparent; color:var(--muted); }
     div.stButton > button:hover { border-color:var(--green); color:var(--green); }
     @media (max-width:700px) { .block-container { padding:1.2rem 1rem 2rem; } .brand-row { margin-bottom:3.5rem; } .nav-links { gap:.6rem; } .system-map { grid-template-columns:1fr 1fr; } }
-    @media (prefers-reduced-motion:reduce) { .boot-screen, .boot-window, .marquee-track, .card, .project-tile, .system-node, .terminal, .availability-dot { animation:none; } .boot-screen { display:none; } }
+    @media (prefers-reduced-motion:reduce) { .stApp::before, .stApp::after, .background-layer::before, .boot-screen, .boot-window, .marquee-track, .card, .project-tile, .system-node, .terminal, .availability-dot, .orb { animation:none; } .boot-screen { display:none; } }
     </style>
     """,
     unsafe_allow_html=True,
@@ -98,6 +113,11 @@ if "tasks" not in st.session_state:
     ]
 
 
+st.markdown(
+    '<div class="background-layer" aria-hidden="true"><span class="orb"></span><span class="orb"></span><span class="orb"></span><span class="orb"></span></div><div class="page-content">'
+    ,
+    unsafe_allow_html=True,
+)
 st.markdown(
     '<div class="boot-screen"><div class="boot-window"><div class="boot-top">portfolio_boot.py · ready</div><div class="boot-code"><b>></b> loading profile...<br><b>></b> initializing skills...<br><b>></b> opening workspace...<br><i>hello, I’m Subhrajeet Swain.</i></div></div></div>'
     '<div class="brand-row"><div class="brand"><span class="mark">SS</span> Subhrajeet Swain</div><div class="nav-links"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#contact">Contact</a></div></div>',
@@ -195,3 +215,4 @@ st.markdown(
     unsafe_allow_html=True,
 )
 st.caption("© 2026 Subhrajeet Swain · English · Hindi · Odia")
+st.markdown("</div>", unsafe_allow_html=True)

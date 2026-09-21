@@ -25,6 +25,23 @@ st.markdown(
     .orb:nth-child(3) { top:38%; left:91%; width:5px; height:5px; animation-delay:-9s; }
     .orb:nth-child(4) { top:80%; left:24%; width:4px; height:4px; background:#d394ff; box-shadow:0 0 16px 3px rgba(211,148,255,.45); animation-delay:-4s; }
     .page-content { position:relative; z-index:1; }
+    .hero-stage { min-height:72vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:3rem 0 5rem; }
+    .hero-stage .eyebrow { margin-bottom:1.4rem; }
+    .hero-title { margin:0!important; font-size:clamp(3.8rem,10vw,8.5rem)!important; line-height:.84!important; }
+    .hero-title .accent { color:var(--green); }
+    .hero-subtitle { max-width:720px; margin:1.8rem auto 0; color:#d7e0ef; font-size:clamp(.9rem,2vw,1.2rem); font-weight:700; letter-spacing:.03em; }
+    .hero-intro { max-width:620px; margin:1.2rem auto 0; color:var(--muted); font-size:1rem; line-height:1.7; }
+    .hero-terminal { width:min(680px,100%); margin:2rem auto 0; text-align:left; }
+    .hero-social { display:flex; justify-content:center; flex-wrap:wrap; gap:.7rem; margin-top:1.4rem; }
+    .hero-social a { color:var(--muted); font-size:.75rem; text-decoration:none; }
+    .hero-social a:hover { color:var(--green); }
+    .section-divider { display:flex; align-items:center; gap:1rem; margin:2rem 0 3rem; color:var(--muted); font: .7rem 'DM Mono',monospace; }
+    .section-divider::before, .section-divider::after { height:1px; flex:1; background:var(--line); content:""; }
+    .editor-card { border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#070a10; }
+    .editor-top { display:flex; justify-content:space-between; padding:.75rem 1rem; border-bottom:1px solid var(--line); color:var(--muted); font:.7rem 'DM Mono',monospace; }
+    .editor-code { padding:1.2rem; color:#d7e0ef; font:.78rem/2 'DM Mono',monospace; }
+    .editor-code .line-no { display:inline-block; width:2rem; color:#52617b; }
+    .editor-code .key { color:#b6c7ff; } .editor-code .value { color:var(--green); } .editor-code .comment { color:#71809b; }
     .boot-screen { position:fixed; inset:0; z-index:999; display:grid; place-items:center; background:#070a10; pointer-events:none; animation:boot-out .8s 2.1s forwards; }
     .boot-window { width:min(560px, calc(100vw - 2rem)); border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#0b1019; box-shadow:0 30px 100px rgba(0,0,0,.55); animation:boot-in .7s ease-out both; }
     .boot-top { padding:.8rem 1rem; border-bottom:1px solid var(--line); color:var(--muted); font:.7rem 'DM Mono',monospace; }
@@ -123,20 +140,18 @@ st.markdown(
     '<div class="brand-row"><div class="brand"><span class="mark">SS</span> Subhrajeet Swain</div><div class="nav-links"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#contact">Contact</a></div></div>',
     unsafe_allow_html=True,
 )
-hero_left, hero_right = st.columns([1.1, 0.9], gap="large")
-with hero_left:
-    st.markdown('<div class="eyebrow">Entry-level IT professional</div>', unsafe_allow_html=True)
-    st.markdown('<h1>Hi, I’m<br><span style="color:var(--green)">Subhrajeet.</span></h1>', unsafe_allow_html=True)
-with hero_right:
-    st.markdown(
-        '<p class="hero-role"><span class="availability-dot"></span>Python · QA Testing · SQL · IT Support</p>'
-        '<p class="hero-copy">A motivated and detail-oriented BCA and MCA graduate applying software development, testing, and data-driven problem solving.</p>'
-        '<div class="hero-actions"><a class="primary" href="#work">Explore my work →</a><a href="mailto:subhrajeet03@gmail.com">Get in touch ↗</a></div>'
-        '<div class="social-row"><a href="https://github.com/subhrajeet-swain">GitHub ↗</a><a href="https://linkedin.com/in/subhrajeet-swain">LinkedIn ↗</a><a href="tel:+919776445055">+91 9776445055</a></div>'
-        '<span class="pill">QA & testing</span><span class="pill">Software development</span><span class="pill">IT support</span>'
-        '<div class="terminal"><div class="term-bar">● ● ● &nbsp; subhrajeet@portfolio:~</div><div class="term-body"><div><span class="prompt">$</span> whoami</div><div class="code">Subhrajeet Swain · entry-level IT professional</div><div><span class="prompt">$</span> focus --on</div><div class="comment"># learn, test, document, improve</div></div></div>',
-        unsafe_allow_html=True,
-    )
+st.markdown(
+    '<section class="hero-stage">'
+    '<div class="eyebrow">Entry-level IT professional · 2026</div>'
+    '<h1 class="hero-title">Hi, I’m<br><span class="accent">Subhrajeet.</span></h1>'
+    '<p class="hero-subtitle">Python Developer · QA Tester · Data & IT Support</p>'
+    '<p class="hero-intro">I turn requirements into tested, documented, and useful digital systems—with a detail-oriented approach and a constant willingness to learn.</p>'
+    '<div class="hero-actions"><a class="primary" href="#work">Explore my work →</a><a href="mailto:subhrajeet03@gmail.com">Get in touch ↗</a></div>'
+    '<div class="hero-social"><a href="https://github.com/subhrajeet-swain">GitHub ↗</a><span class="muted">·</span><a href="https://linkedin.com/in/subhrajeet-swain">LinkedIn ↗</a><span class="muted">·</span><a href="tel:+919776445055">+91 9776445055</a></div>'
+    '<div class="hero-terminal terminal"><div class="term-bar">● ● ● &nbsp; subhrajeet@portfolio:~</div><div class="term-body"><div><span class="prompt">$</span> whoami</div><div class="code">Subhrajeet Swain · entry-level IT professional</div><div><span class="prompt">$</span> focus --on</div><div class="comment"># learn, test, document, improve</div></div></div>'
+    '</section>',
+    unsafe_allow_html=True,
+)
 
 st.markdown(
     '<div class="marquee"><div class="marquee-track">' + "".join(
@@ -148,7 +163,23 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.markdown('<div class="eyebrow">Selected work</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-divider">profile.py · system summary</div>', unsafe_allow_html=True)
+st.markdown(
+    '<div class="editor-card">'
+    '<div class="editor-top"><span>subhrajeet_profile.py</span><span>Python 3.11 · ready</span></div>'
+    '<div class="editor-code">'
+    '<div><span class="line-no">01</span><span class="key">profile</span> = {</div>'
+    '<div><span class="line-no">02</span>&nbsp;&nbsp;<span class="key">"location"</span>: <span class="value">"Aska, Odisha"</span>,</div>'
+    '<div><span class="line-no">03</span>&nbsp;&nbsp;<span class="key">"strength"</span>: <span class="value">"quality-minded execution"</span>,</div>'
+    '<div><span class="line-no">04</span>&nbsp;&nbsp;<span class="key">"approach"</span>: <span class="value">"learn · test · document · improve"</span>,</div>'
+    '<div><span class="line-no">05</span>&nbsp;&nbsp;<span class="key">"next_step"</span>: <span class="value">"ready to contribute"</span>,</div>'
+    '<div><span class="line-no">06</span>}</div>'
+    '<div><span class="line-no">07</span><span class="comment"># built with curiosity and consistency</span></div>'
+    '</div></div>',
+    unsafe_allow_html=True,
+)
+
+st.markdown('<div id="work"></div><div class="eyebrow">Selected work</div>', unsafe_allow_html=True)
 st.header("Projects with purpose.")
 work_col, about_col = st.columns([1.2, 0.8], gap="medium")
 with work_col:
@@ -172,7 +203,7 @@ with about_col:
         unsafe_allow_html=True,
     )
 
-st.markdown('<div class="eyebrow" style="margin-top:7rem">Experience & toolkit</div>', unsafe_allow_html=True)
+st.markdown('<div id="experience"></div><div class="eyebrow" style="margin-top:7rem">Experience & toolkit</div>', unsafe_allow_html=True)
 st.header("Background that compounds.")
 experience, skills = st.columns(2, gap="medium")
 with experience:
@@ -211,7 +242,7 @@ for column, (title, description) in zip(project_columns, projects):
         st.markdown(f'<div class="project-tile"><strong>{title}</strong><p>{description}</p></div>', unsafe_allow_html=True)
 
 st.markdown(
-    '<div class="contact"><div class="eyebrow">Let’s connect</div><h2>Ready to learn & contribute.</h2><p class="muted">Open to opportunities in software development, QA, testing, and IT support.</p><p><a href="mailto:subhrajeet03@gmail.com">subhrajeet03@gmail.com</a><br><a href="tel:+919776445055">+91 9776445055</a></p><p><a href="https://linkedin.com/in/subhrajeet-swain">LinkedIn</a> · <a href="https://github.com/subhrajeet-swain">GitHub</a></p></div>',
+    '<div id="contact" class="contact"><div class="eyebrow">Let’s connect</div><h2>Ready to learn & contribute.</h2><p class="muted">Open to opportunities in software development, QA, testing, and IT support.</p><p><a href="mailto:subhrajeet03@gmail.com">subhrajeet03@gmail.com</a><br><a href="tel:+919776445055">+91 9776445055</a></p><p><a href="https://linkedin.com/in/subhrajeet-swain">LinkedIn</a> · <a href="https://github.com/subhrajeet-swain">GitHub</a></p></div>',
     unsafe_allow_html=True,
 )
 st.caption("© 2026 Subhrajeet Swain · English · Hindi · Odia")

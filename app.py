@@ -50,6 +50,7 @@ st.markdown(
     .term-body { padding:1rem; color:#d7e0ef; font:.73rem/1.8 'DM Mono',monospace; }
     .prompt { color:var(--green); } .comment { color:#71809b; } .code { color:#b6c7ff; }
     .marquee { margin:5rem 0; padding:1rem 0; overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); white-space:nowrap; }
+    .marquee-track { display:flex; width:max-content; animation:marquee-scroll 24s linear infinite; }
     .marquee span { display:inline-block; margin-right:2.1rem; color:var(--muted); font-size:.7rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
     .marquee span:nth-child(even) { color:var(--green); }
     .card { height:100%; padding:1.6rem; border:1px solid var(--line); border-radius:20px; background:rgba(17,23,34,.82); }
@@ -68,10 +69,21 @@ st.markdown(
     .system-node { padding:1rem; border:1px solid var(--line); border-radius:12px; background:linear-gradient(145deg,rgba(108,124,255,.12),#0e141e); }
     .system-node small { display:block; margin-bottom:.55rem; color:var(--green); font:.65rem 'DM Mono',monospace; }
     .system-node strong { font-size:.8rem; }
+    .card, .project-tile, .system-node { animation:surface-rise .7s ease both; transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+    .card:hover, .project-tile:hover, .system-node:hover { transform:translateY(-5px); border-color:var(--green); box-shadow:0 18px 50px rgba(0,0,0,.24); }
+    .project-tile:nth-child(2), .system-node:nth-child(2) { animation-delay:.1s; }
+    .project-tile:nth-child(3), .system-node:nth-child(3) { animation-delay:.2s; }
+    .project-tile:nth-child(4), .system-node:nth-child(4) { animation-delay:.3s; }
+    .terminal { animation:terminal-glow 3s ease-in-out infinite; }
+    .availability-dot { display:inline-block; width:7px; height:7px; margin-right:6px; border-radius:50%; background:var(--green); animation:status-pulse 1.8s ease-in-out infinite; }
+    @keyframes marquee-scroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+    @keyframes surface-rise { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes terminal-glow { 0%,100% { box-shadow:0 0 0 rgba(156,255,69,0); } 50% { box-shadow:0 0 32px rgba(108,124,255,.14); } }
+    @keyframes status-pulse { 0%,100% { box-shadow:0 0 0 0 rgba(156,255,69,.5); } 50% { box-shadow:0 0 0 7px rgba(156,255,69,0); } }
     div.stButton > button { border:1px solid var(--line); border-radius:10px; background:transparent; color:var(--muted); }
     div.stButton > button:hover { border-color:var(--green); color:var(--green); }
     @media (max-width:700px) { .block-container { padding:1.2rem 1rem 2rem; } .brand-row { margin-bottom:3.5rem; } .nav-links { gap:.6rem; } .system-map { grid-template-columns:1fr 1fr; } }
-    @media (prefers-reduced-motion:reduce) { .boot-screen, .boot-window { animation:none; } .boot-screen { display:none; } }
+    @media (prefers-reduced-motion:reduce) { .boot-screen, .boot-window, .marquee-track, .card, .project-tile, .system-node, .terminal, .availability-dot { animation:none; } .boot-screen { display:none; } }
     </style>
     """,
     unsafe_allow_html=True,
@@ -97,7 +109,7 @@ with hero_left:
     st.markdown('<h1>Hi, I’m<br><span style="color:var(--green)">Subhrajeet.</span></h1>', unsafe_allow_html=True)
 with hero_right:
     st.markdown(
-        '<p class="hero-role">Python · QA Testing · SQL · IT Support</p>'
+        '<p class="hero-role"><span class="availability-dot"></span>Python · QA Testing · SQL · IT Support</p>'
         '<p class="hero-copy">A motivated and detail-oriented BCA and MCA graduate applying software development, testing, and data-driven problem solving.</p>'
         '<div class="hero-actions"><a class="primary" href="#work">Explore my work →</a><a href="mailto:subhrajeet03@gmail.com">Get in touch ↗</a></div>'
         '<div class="social-row"><a href="https://github.com/subhrajeet-swain">GitHub ↗</a><a href="https://linkedin.com/in/subhrajeet-swain">LinkedIn ↗</a><a href="tel:+919776445055">+91 9776445055</a></div>'
@@ -107,12 +119,12 @@ with hero_right:
     )
 
 st.markdown(
-    '<div class="marquee">' + "".join(
+    '<div class="marquee"><div class="marquee-track">' + "".join(
         f"<span>{item}</span>" for item in [
             "Python", "Manual testing", "SQL", "UI/UX testing", "MySQL",
             "Defect tracking", "HTML & CSS", "Data-driven problem solving",
         ] * 2
-    ) + "</div>",
+    ) + "</div></div>",
     unsafe_allow_html=True,
 )
 
